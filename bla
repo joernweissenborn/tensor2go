@@ -1,0 +1,38 @@
+package tensor2go
+import "github.com/joernweissenborn/propertygraph2go"
+
+const (
+	DIM_EDGE = "dim_edge"
+)
+
+type T3nsor struct {
+
+	graph propertygraph2go.PropertyGraph
+
+	tensorRoot propertygraph2go.Vertex
+
+}
+
+func New() (t *T3nsor) {
+	t = &T3nsor{
+		graph: propertygraph2go.NewInMemoryGraph(),
+	}
+
+	t.tensorRoot = t.graph.CreateVertex("root",nil)
+	return
+}
+
+func (t *T3nsor) AddDim() {
+
+}
+
+func (t *T3nsor) getLatestDim() (nextDim propertygraph2go.Vertex) {
+	nextDimEdges := t.graph.GetOutgoingEdgesByLabel(t.tensorRoot.Id(),DIM_EDGE)
+
+if len(nextDimEdges) == nil {
+		return
+	}
+
+
+}
+
